@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .slides-container {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 40px;
+            text-align: center;
+            scroll-behavior: smooth;
+            transition: all 0.8s ease;
+        }
+
+        /* Slide 1 - Sorry Slide */
+        .slide1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .slide1 h1 {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        .slide1 p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .heart {
+            font-size: 4rem;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        /* Slide 2 - Letter Slide */
+        .slide2 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .letter-box {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 50px 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.8s ease;
+        }
+
+        .letter-box h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #f5576c;
+        }
+
+        .letter-box p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .letter-box .signature {
+            margin-top: 30px;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #f5576c;
+        }
+
+        /* Slide 3 - Love Slide */
+        .slide3 {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+        }
+
+        .slide3 h1 {
+            font-size: 4rem;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+
+        .slide3 p {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .love-heart {
+            font-size: 5rem;
+            margin-top: 30px;
+            animation: floatHeart 3s ease-in-out infinite;
+        }
+
+        /* Navigation */
+        .nav-buttons {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        button {
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid white;
+            color: white;
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Animations */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        @keyframes floatHeart {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .slide1 h1 {
+                font-size: 3rem;
+            }
+
+            .slide1 p {
+                font-size: 1.2rem;
+            }
+
+            .letter-box {
+                padding: 30px 20px;
+                max-width: 90%;
+            }
+
+            .letter-box h2 {
+                font-size: 1.5rem;
+            }
+
+            .letter-box p {
+                font-size: 1rem;
+            }
+
+            .slide3 h1 {
+                font-size: 2.5rem;
+            }
+
+            .slide3 p {
+                font-size: 1.3rem;
+            }
+
+            .heart, .love-heart {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slides-container" id="slidesContainer">
+        <!-- Slide 1: Sorry -->
+        <div class="slide slide1">
+            <div class="heart">💔</div>
+            <h1>I'm Sorry</h1>
+            <p>I realize I hurt you</p>
+            <p>Let me make it right</p>
+        </div>
+
+        <!-- Slide 2: Letter -->
+        <div class="slide slide2">
+            <div class="letter-box">
+                <h2>A Letter to You</h2>
+                <p>My Dearest,</p>
+                <p>I want to sincerely apologize for making you feel jealous. That was never my intention, and I deeply regret causing you any pain or insecurity.</p>
+                <p>You mean the world to me, and your feelings are incredibly important. I should have been more considerate and mindful of your emotions. Your trust is precious, and I never want to take it for granted.</p>
+                <p>I promise to do better. I promise to be more aware, more caring, and more understanding. You deserve someone who makes you feel completely secure in their love.</p>
+                <p>I'm truly sorry from the bottom of my heart.</p>
+                <div class="signature">Forever yours, 💕</div>
+            </div>
+        </div>
+
+        <!-- Slide 3: I Love You -->
+        <div class="slide slide3">
+            <h1>I Love You</h1>
+            <p>So much more than words can say</p>
+            <p>You are my everything</p>
+            <div class="love-heart">💗</div>
+        </div>
+    </div>
+
+    <div class="slide-counter">
+        <span id="currentSlide">1</span> / 3
+    </div>
+
+    <div class="nav-buttons">
+        <button id="prevBtn" onclick="prevSlide()">← Previous</button>
+        <button id="nextBtn" onclick="nextSlide()">Next →</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slidesContainer = document.getElementById('slidesContainer');
+        const totalSlides = document.querySelectorAll('.slide').length;
+
+        function showSlide(n) {
+            const offset = -n * 100;
+            slidesContainer.style.transform = `translateX(${offset}%)`;
+            document.getElementById('currentSlide').textContent = n + 1;
+            
+            // Update button states
+            document.getElementById('prevBtn').disabled = n === 0;
+            document.getElementById('nextBtn').disabled = n === totalSlides - 1;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>
