@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>I'm Sorry ❤️</title>
     <style>
         * {
@@ -11,10 +11,15 @@
             box-sizing: border-box;
         }
 
-        body {
+        html, body {
+            width: 100%;
+            height: 100%;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
         }
 
         .slides-container {
@@ -22,19 +27,21 @@
             width: 100vw;
             height: 100vh;
             position: relative;
+            overflow: hidden;
         }
 
         .slide {
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
+            min-width: 100vw;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            padding: 40px;
+            padding: 20px;
             text-align: center;
             scroll-behavior: smooth;
-            transition: all 0.8s ease;
+            transition: transform 0.8s ease;
         }
 
         /* Slide 1 - Sorry Slide */
@@ -44,56 +51,66 @@
         }
 
         .slide1 h1 {
-            font-size: 5rem;
-            margin-bottom: 20px;
+            font-size: 3.5rem;
+            margin-bottom: 15px;
             animation: bounce 2s infinite;
+            font-weight: 700;
         }
 
         .slide1 p {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
             opacity: 0.9;
+            font-weight: 300;
         }
 
         .heart {
-            font-size: 4rem;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
             animation: heartbeat 1.5s infinite;
+            display: block;
         }
 
         /* Slide 2 - Letter Slide */
         .slide2 {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             color: white;
+            padding: 15px;
         }
 
         .letter-box {
             background: rgba(255, 255, 255, 0.95);
             color: #333;
-            padding: 50px 40px;
-            border-radius: 20px;
-            max-width: 600px;
+            padding: 30px 20px;
+            border-radius: 15px;
+            max-width: 95vw;
+            max-height: 85vh;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             animation: slideIn 0.8s ease;
+            overflow-y: auto;
         }
 
         .letter-box h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
             color: #f5576c;
+            font-weight: 600;
         }
 
         .letter-box p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 12px;
             text-align: left;
+            font-weight: 400;
         }
 
         .letter-box .signature {
-            margin-top: 30px;
+            margin-top: 20px;
             font-style: italic;
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: #f5576c;
+            font-weight: 500;
         }
 
         /* Slide 3 - Love Slide */
@@ -103,70 +120,83 @@
         }
 
         .slide3 h1 {
-            font-size: 4rem;
-            margin-bottom: 30px;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
             animation: pulse 2s infinite;
+            font-weight: 700;
         }
 
         .slide3 p {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
             font-weight: 300;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .love-heart {
-            font-size: 5rem;
-            margin-top: 30px;
+            font-size: 4rem;
+            margin-top: 20px;
             animation: floatHeart 3s ease-in-out infinite;
+            display: block;
         }
 
         /* Navigation */
         .nav-buttons {
             position: fixed;
-            bottom: 40px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 20px;
+            gap: 12px;
             z-index: 100;
+            width: 90vw;
+            justify-content: center;
         }
 
         button {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.35);
             border: 2px solid white;
             color: white;
-            padding: 12px 30px;
-            font-size: 1rem;
+            padding: 10px 20px;
+            font-size: 0.9rem;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: bold;
+            flex: 1;
+            max-width: 130px;
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        button:hover {
+        button:active {
             background: rgba(255, 255, 255, 0.5);
-            transform: scale(1.05);
+            transform: scale(0.95);
         }
 
         button:disabled {
-            opacity: 0.3;
+            opacity: 0.2;
             cursor: not-allowed;
         }
 
         .slide-counter {
             position: fixed;
-            top: 30px;
-            right: 30px;
+            top: 20px;
+            right: 20px;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: bold;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 8px 12px;
+            border-radius: 20px;
+            z-index: 100;
         }
 
         /* Animations */
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-15px); }
         }
 
         @keyframes heartbeat {
@@ -181,7 +211,7 @@
 
         @keyframes floatHeart {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-30px); }
+            50% { transform: translateY(-25px); }
         }
 
         @keyframes slideIn {
@@ -195,40 +225,156 @@
             }
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
+        /* Mobile optimizations */
+        @media (max-width: 480px) {
+            .slide {
+                padding: 15px;
+            }
+
             .slide1 h1 {
-                font-size: 3rem;
+                font-size: 2.8rem;
+                margin-bottom: 12px;
             }
 
             .slide1 p {
-                font-size: 1.2rem;
+                font-size: 1rem;
+                margin-bottom: 10px;
+            }
+
+            .heart {
+                font-size: 2.8rem;
+                margin-bottom: 15px;
             }
 
             .letter-box {
-                padding: 30px 20px;
-                max-width: 90%;
+                padding: 20px 15px;
+                border-radius: 12px;
             }
 
             .letter-box h2 {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
+                margin-bottom: 12px;
             }
 
             .letter-box p {
-                font-size: 1rem;
+                font-size: 0.9rem;
+                line-height: 1.5;
+                margin-bottom: 10px;
             }
 
             .slide3 h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
 
             .slide3 p {
-                font-size: 1.3rem;
+                font-size: 1.1rem;
+                margin-bottom: 12px;
+            }
+
+            .love-heart {
+                font-size: 3.5rem;
+                margin-top: 15px;
+            }
+
+            button {
+                padding: 10px 15px;
+                font-size: 0.85rem;
+                max-width: 100px;
+            }
+
+            .slide-counter {
+                font-size: 0.9rem;
+                padding: 6px 10px;
+            }
+
+            .nav-buttons {
+                bottom: 15px;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .slide1 h1 {
+                font-size: 2.2rem;
             }
 
             .heart, .love-heart {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
+
+            .slide3 h1 {
+                font-size: 2.2rem;
+            }
+
+            .letter-box h2 {
+                font-size: 1.1rem;
+            }
+
+            button {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Landscape mode */
+        @media (max-height: 500px) {
+            .slide {
+                padding: 10px;
+            }
+
+            .slide1 h1, .slide3 h1 {
+                font-size: 2rem;
+                margin-bottom: 8px;
+            }
+
+            .heart, .love-heart {
+                font-size: 2rem;
+                margin: 8px 0;
+            }
+
+            .letter-box {
+                padding: 15px 12px;
+                max-height: 70vh;
+            }
+
+            .letter-box h2 {
+                font-size: 1.2rem;
+                margin-bottom: 8px;
+            }
+
+            .letter-box p {
+                font-size: 0.85rem;
+                margin-bottom: 8px;
+            }
+
+            .nav-buttons {
+                bottom: 10px;
+                gap: 8px;
+            }
+
+            button {
+                padding: 6px 10px;
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Scrollbar styling for letter box */
+        .letter-box::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .letter-box::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .letter-box::-webkit-scrollbar-thumb {
+            background: rgba(245, 87, 108, 0.5);
+            border-radius: 10px;
+        }
+
+        .letter-box::-webkit-scrollbar-thumb:hover {
+            background: rgba(245, 87, 108, 0.7);
         }
     </style>
 </head>
@@ -250,7 +396,7 @@
                 <p>I want to sincerely apologize for making you feel jealous. That was never my intention, and I deeply regret causing you any pain or insecurity.</p>
                 <p>You mean the world to me, and your feelings are incredibly important. I should have been more considerate and mindful of your emotions. Your trust is precious, and I never want to take it for granted.</p>
                 <p>I promise to do better. I promise to be more aware, more caring, and more understanding. You deserve someone who makes you feel completely secure in their love.</p>
-                <p>I'm truly sorry from the bottom of my heart.</p>
+                <p>I'm truly sorry from the bottom of my heart. You are my everything, and losing you would be the greatest tragedy of my life.</p>
                 <div class="signature">Forever yours, 💕</div>
             </div>
         </div>
@@ -269,7 +415,7 @@
     </div>
 
     <div class="nav-buttons">
-        <button id="prevBtn" onclick="prevSlide()">← Previous</button>
+        <button id="prevBtn" onclick="prevSlide()">← Prev</button>
         <button id="nextBtn" onclick="nextSlide()">Next →</button>
     </div>
 
@@ -307,6 +453,32 @@
             if (e.key === 'ArrowRight') nextSlide();
             if (e.key === 'ArrowLeft') prevSlide();
         });
+
+        // Swipe navigation for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    nextSlide(); // Swipe left = next
+                } else {
+                    prevSlide(); // Swipe right = previous
+                }
+            }
+        }
 
         // Initialize
         showSlide(0);
